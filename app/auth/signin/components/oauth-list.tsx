@@ -1,9 +1,8 @@
-"use client"
-
 import * as React from 'react';
 import {getProviders, signIn} from "next-auth/react";
 import {Button} from "@/components/ui/button";
 import {Icons} from "@/components/ui/icons";
+import OauthButton from "@/app/auth/signin/components/0auth-button";
 
 type Props = {
     callbackUrl?:string
@@ -16,18 +15,7 @@ const OauthList = async (props: Props) => {
         <>
             {providers &&
                 Object.values(providers).map((provider) => (
-                    <Button key={provider.name} variant="outline" type="button"  onClick={() => signIn(provider.id,{
-                        redirect:true,
-                        callbackUrl:props.callbackUrl ?? "http://localhost:3000"
-                    })}>
-
-                        {provider.name == "GitHub" ?
-                            <Icons.gitHub className="mr-2 h-4 w-4"/>
-                            :
-                            <Icons.google className="mr-2 h-4 w-4"/>
-                        }
-                        {provider.name}
-                    </Button>
+                    <OauthButton provider={provider} callbackUrl={props.callbackUrl} key={provider.name}/>
                 ))}
         </>
     );
