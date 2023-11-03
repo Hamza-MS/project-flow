@@ -72,7 +72,9 @@ export function UserAuthForm(props : Props) {
           </span>
                 </div>
             </div>
+            <div className="grid gap-2">
             {props.children}
+            </div>
         </div>
     )
 }
