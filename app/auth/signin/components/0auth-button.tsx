@@ -1,15 +1,15 @@
 "use client"
 
 import * as React from 'react';
-import {useState} from "react";
-import {ClientSafeProvider, signIn} from "next-auth/react";
-import {Icons} from "@/components/ui/icons";
-import {Button} from "@/components/ui/button";
+import { useState } from "react";
+import { ClientSafeProvider, signIn } from "next-auth/react";
+import { Icons } from "@/components/ui/icons";
+import { Button } from "@/components/ui/button";
 
 const providerIcon: Record<string, string> = {
     "GitHub": "gitHub",
     "Google": "google",
-    "Twitter": "twitter",
+    "Microsoft": "microsoft",
 }
 
 type Props = {
@@ -30,15 +30,13 @@ const OauthButton = (props: Props) => {
         }}>
 
             {isLoading && (
-                <Icons.spinner className="mr-2 h-4 w-4 animate-spin"/>
+                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            {props.provider.name == "GitHub" ? (
-                    <Icons.gitHub className="mr-2 h-4 w-4"/>
-                )
-                : props.provider.name == "Google" ? (
-                        <Icons.google className="mr-2 h-4 w-4"/>)
-                    : (<
-                        Icons.react className="mr-2 h-4 w-4"/>)
+            {
+                props.provider.name == "GitHub" ? (<Icons.gitHub className="mr-2 h-4 w-4" />)
+                : props.provider.name == "Google" ? (<Icons.google className="mr-2 h-4 w-4" />)
+                : props.provider.name == "Microsoft" ? (<Icons.microsoft className="mr-2 h-4 w-4" />)
+                : (<Icons.react className="mr-2 h-4 w-4" />)
             }
             {props.provider.name}
         </Button>
