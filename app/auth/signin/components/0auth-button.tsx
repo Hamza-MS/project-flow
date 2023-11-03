@@ -32,7 +32,7 @@ const OauthButton = (props: Props) => {
                 : props.provider.name == "Azure Active Directory" ? (<Icons.microsoft className="mr-2 h-4 w-4" />)
                 : (<Icons.react className="mr-2 h-4 w-4" />)
             }
-            {props.provider.name}
+            {props.provider.name == "Azure Active Directory" ? "Microsoft" :props.provider.name}
         </Button>
     );
 };
