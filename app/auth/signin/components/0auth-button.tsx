@@ -6,12 +6,6 @@ import { ClientSafeProvider, signIn } from "next-auth/react";
 import { Icons } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 
-const providerIcon: Record<string, string> = {
-    "GitHub": "gitHub",
-    "Google": "google",
-    "Microsoft": "microsoft",
-}
-
 type Props = {
     provider: ClientSafeProvider,
     callbackUrl?: string
@@ -35,10 +29,10 @@ const OauthButton = (props: Props) => {
             {
                 props.provider.name == "GitHub" ? (<Icons.gitHub className="mr-2 h-4 w-4" />)
                 : props.provider.name == "Google" ? (<Icons.google className="mr-2 h-4 w-4" />)
-                : props.provider.name == "Microsoft" ? (<Icons.microsoft className="mr-2 h-4 w-4" />)
+                : props.provider.name == "Azure Active Directory" ? (<Icons.microsoft className="mr-2 h-4 w-4" />)
                 : (<Icons.react className="mr-2 h-4 w-4" />)
             }
-            {props.provider.name}
+            {props.provider.name == "Azure Active Directory" ? "Microsoft" :props.provider.name}
         </Button>
     );
 };
