@@ -1,6 +1,7 @@
 import {DefaultSession, NextAuthOptions} from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
+import AzureADProvider from "next-auth/providers/azure-ad";
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
 
@@ -23,7 +24,12 @@ export const options: NextAuthOptions = {
         GoogleProvider({
             clientId: process.env.GOOGLE_ID as string,
             clientSecret: process.env.GOOGLE_SECRET as string
-        })
+        }),
+        AzureADProvider({
+            clientId: process.env.AZURE_AD_CLIENT_ID as string,
+            clientSecret: process.env.AZURE_AD_CLIENT_SECRET as string,
+            tenantId: process.env.AZURE_AD_TENANT_ID as string,
+          })
     ],
     session: {
         strategy: 'jwt',
