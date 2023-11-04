@@ -1,5 +1,5 @@
-export default function SideBar(){
+export default function Home(){
   return (
-    <div>SideBar</div>
+    <div>Home</div>
   )
 }

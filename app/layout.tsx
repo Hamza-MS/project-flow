@@ -8,6 +8,8 @@ import AuthProvider from "@/context/AuthProvider";
 import Header from '@/components/ui/header';
 import HeaderMobile from '@/components/ui/header-mobile';
 import SideNav from '@/components/ui/side-nav';
+import PageWrapper from '@/components/ui/page-wrapper';
+import MarginWidthWrapper from '@/components/ui/margin-width-wrapper';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,12 +28,18 @@ export default function RootLayout({
         <body className={`bg.white ${inter.className}`}>
         <AuthProvider>
           <div className='flex'>
+            <SideNav />
             <main className='flex-1'>
-              <SideNav />
+              <MarginWidthWrapper>
+                <Header />
+                <HeaderMobile />
+                <PageWrapper>
+                  {children}
+                </PageWrapper>
+              </MarginWidthWrapper>
+              
             </main>
-            <Header />
-            <HeaderMobile />
-            {children}
+            
           </div> 
         </AuthProvider>
         <Toaster/>
