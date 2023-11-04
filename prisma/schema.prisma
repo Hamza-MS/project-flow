@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,45 +10,44 @@ datasource db {
 model Account {
   id                String  @id @default(cuid())
   userId            String
-  type              String
-  provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  access_token      String?
   expires_at        Int?
-  token_type        String?
+  id_token          String?
+  provider          String
+  refresh_token     String?
   scope             String?
-  id_token          String? @db.Text
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token_type        String?
+  type              String
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
 
 model Session {
   id           String   @id @default(cuid())
-  sessionToken String   @unique
   userId       String
   expires      DateTime
+  sessionToken String   @unique
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
   id            String    @id @default(cuid())
-  name          String?
   email         String?   @unique
+  name          String?
+  role          Role      @default(BASIC)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
   emailVerified DateTime?
   image         String?
   accounts      Account[]
-  sessions      Session[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  createdTasks  Task[]
-  assignedTasks Task[]    @relation("assignedTo")
   projectsOwned Project[]
+  sessions      Session[]
+  createdTasks  Task[]
   memberOf      Project[] @relation("TeamMembers")
-  role          Role      @default(BASIC)
+  assignedTasks Task[]    @relation("assignedTo")
 }
 
 model VerificationToken {
@@ -66,16 +62,13 @@ model Project {
   id          String   @id @default(cuid())
   name        String
   description String
-  emojiIcon   String
-  identifier  String   @unique
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  owner       User     @relation(fields: [ownerId], references: [id])
-  teamMembers User[]   @relation("TeamMembers")
   ownerId     String
+  emojiIcon   String
+  owner       User     @relation(fields: [ownerId], references: [id])
   tasks       Task[]
-
-  @@index([identifier])
+  teamMembers User[]   @relation("TeamMembers")
 }
 
 model Task {
@@ -89,15 +82,15 @@ model Task {
   startDate      DateTime
   endDate        DateTime
   completionDate DateTime
-  isFollowedBy   Task[]     @relation("dependsOn")
-  isFollowing    Task[]     @relation("dependsOn")
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
-  project        Project    @relation(fields: [projectId], references: [id])
   projectId      String
-  createdBy      User       @relation(fields: [createdById], references: [id])
   createdById    String
+  createdBy      User       @relation(fields: [createdById], references: [id])
+  project        Project    @relation(fields: [projectId], references: [id])
   assignedTo     User[]     @relation("assignedTo")
+  Task_A         Task[]     @relation("dependsOn")
+  Task_B         Task[]     @relation("dependsOn")
 
   @@unique([projectId, name])
 }
