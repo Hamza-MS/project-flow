@@ -4,6 +4,11 @@ import './globals.css'
 import {Toaster} from "@/components/ui/toaster";
 import AuthProvider from "@/context/AuthProvider";
 
+//Side Bar Imports 
+import Header from '@/components/ui/header';
+import HeaderMobile from '@/components/ui/header-mobile';
+import SideNav from '@/components/ui/side-nav';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -18,9 +23,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-        <body className={inter.className}>
+        <body className={`bg.white ${inter.className}`}>
         <AuthProvider>
+          <div className='flex'>
+            <main className='flex-1'>
+              <SideNav />
+            </main>
+            <Header />
+            <HeaderMobile />
             {children}
+          </div> 
         </AuthProvider>
         <Toaster/>
         </body>
