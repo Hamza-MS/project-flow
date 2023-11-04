@@ -21,7 +21,7 @@ import {emojis} from "@/components/emoji-picker/emoji-list";
 import {useSession} from "next-auth/react";
 import {prisma} from "@/lib/prisma";
 import {useToast} from "@/components/ui/use-toast";
-import {createNewProject} from "@/app/projects/new/actions";
+import {createNewProject} from "@/app/projects/actions";
 
 
 
@@ -115,7 +115,6 @@ const ProjectCreateForm = (props: Props) => {
                 />
 
                 <div className={"flex justify-end space-x-2"}>
-                    <Button type={"reset"} variant="outline">Cancel</Button>
                     <Button type={"submit"}>Create Project</Button>
                 </div>
             </form>
