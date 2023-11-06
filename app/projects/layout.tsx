@@ -13,34 +13,10 @@ type Props = {
 };
 const Layout = (props: Props) => {
     return (
-       <>
-           <ProjectPageHeader>
-               <div className={"flex-shrink-0"}>
-                   <div className={"flex items-center gap-3"}>
-                        <SearchInput/>
-                       <Dialog>
-                           <DialogTrigger asChild>
-                               <Button>
-                                   <PlusIcon className={"h-4 w-4 mr-2"}/>
-                                   Add Project
-                               </Button>
-                           </DialogTrigger>
-                           <DialogContent>
-                               <DialogHeader>
-                                   <DialogTitle>Start a new Project?</DialogTitle>
-                                   <DialogDescription>
-                                       This form is your first step to kickstart your project. Fill it out with the necessary details to get started
-                                   </DialogDescription>
-                               </DialogHeader>
-                               <ProjectCreateForm/>
+       <main className="relative flex h-full w-full flex-col overflow-hidden bg-custom-background-100">
 
-                           </DialogContent>
-                       </Dialog>
-                   </div>
-               </div>
-           </ProjectPageHeader>
            {props.children}
-       </>
+       </main>
     );
 };
 
