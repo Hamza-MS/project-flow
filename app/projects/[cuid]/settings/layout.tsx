@@ -1,40 +1,39 @@
-"use client"
 import * as React from 'react';
 import {SidebarNav} from "@/app/projects/[cuid]/settings/components/sidebar-nav";
-import {usePathname} from "next/navigation";
 import ProjectSettingsHeader from "@/app/projects/[cuid]/settings/components/project-settings-header";
 
 type Props = {
-    children: React.ReactNode
+    children: React.ReactNode,
+    params: {
+        cuid: string
+    }
 };
 
 
 const Layout = (props: Props) => {
 
-    const pathname = usePathname()
-    const cuid = pathname.split('/')[2]
 
 
     const sidebarNavItems = [
         {
             title: "General",
-            href: `/projects/${cuid}/settings`,
+            href: `/projects/${props.params.cuid}/settings`,
         },
         {
             title: "Members",
-            href: `/projects/${cuid}/settings/members`,
+            href: `/projects/${props.params.cuid}/settings/members`,
         },
         {
             title: "Integrations",
-            href: `/projects/${cuid}/settings/integrations`,
+            href: `/projects/${props.params.cuid}/settings/integrations`,
         },
         {
             title: "Estimates",
-            href: `/projects/${cuid}/settings/estimates`,
+            href: `/projects/${props.params.cuid}/settings/estimates`,
         },
         {
             title: "Automations",
-            href: `/projects/${cuid}/settings/automations`,
+            href: `/projects/${props.params.cuid}/settings/automations`,
         },
     ]
 
