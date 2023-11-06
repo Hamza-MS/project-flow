@@ -75,7 +75,7 @@ const ProjectCard = (props: Props) => {
                         <Button variant={"ghost"} size={"icon"} onClick={(e) => {
                             e.preventDefault()
                             e.stopPropagation()
-                            router.push(`/projects/${props.uuid}/edit`)
+                            router.push(`/projects/${props.uuid}/settings`)
                         }}>
                             <Pencil1Icon className={"h-4 w-4"}/>
                         </Button>
