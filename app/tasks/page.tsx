@@ -10,20 +10,29 @@ export default async function TasksPage(props: Props) {
   const session = await getSession()
   const tasks : Task[] = await prisma.task.findMany(
     // get only the tasks that belong to the projects in witch the use is a member
+    // or the user has created
     {
       where: {
-        project: {
-          teamMembers: {
-            some: {
-              id: session?.user.id
-            }
-          }
-        }
+        OR: [
+          {
+            project: {
+              teamMembers: {
+                some: {
+                  id: session?.user.id,
+                },
+              },
+            },
+          },
+          {
+            createdBy: session?.user,
+          },
+        ],
       },
       orderBy: {
-        createdAt: "desc"
-      }
+        createdAt: "desc",
+      },
     }
+   
   )
 
   return (
