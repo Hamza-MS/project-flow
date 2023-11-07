@@ -1,9 +1,9 @@
 "use client"
 
-import { Project, TaskStatus, User } from "@prisma/client"
+import { Task } from "@prisma/client"
 import {ColumnDef} from "@tanstack/react-table"
 
-export const columns: ColumnDef<TaskStatus>[] = [
+export const columns: ColumnDef<Task>[] = [
     {accessorKey: "id", header: "ID"},
     {accessorKey: "project", header: "Project"},
     {accessorKey: "name", header: "Name"},
