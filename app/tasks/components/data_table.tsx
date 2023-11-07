@@ -1,5 +1,6 @@
 "use client"
 
+// tutorial link: https://ui.shadcn.com/docs/components/data-table
 import {
   ColumnDef,
   flexRender,
@@ -69,7 +70,9 @@ export function DataTable<TData, TValue>({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
+                No results.<br/>
+                 (╯°□°）╯︵ ┻━┻)<br/>
+                errorType : Moudden
               </TableCell>
             </TableRow>
           )}
