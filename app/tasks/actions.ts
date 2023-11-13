@@ -13,15 +13,17 @@ export const createNewTask = async (formData: FormData) => {
     const name = formData.get("name") as string | undefined;
     const description = formData.get("description") as string | undefined;
     const projectId = formData.get("projectId") as string | undefined;
+    const startDate = formData.get("startDate") as string ;
+    const endDate = formData.get("endDate") as string ;
+    const completionDate = formData.get("completionDate") as string;
+
     const status = TaskStatus.BACKLOG;
     const progress = 0;
     const isCompleted = false;
     const createdAt = new Date(now());
     const updatedAt = new Date(now());
     const createdById = session?.user?.id;
-    const startDate = formData.get("startDate") as string ;
-    const endDate = formData.get("endDate") as string ;
-    const completionDate = formData.get("completionDate") as string;
+    
 
     
 
