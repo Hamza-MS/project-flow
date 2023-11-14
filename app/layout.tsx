@@ -32,12 +32,7 @@ export default function RootLayout({
                 enableSystem
                 disableTransitionOnChange
             >
-                <div className='relative flex h-screen w-full overflow-hidden'>
-                    <SideNav/>
-                    <PageWrapper>
-                        {children}
-                    </PageWrapper>
-                </div>
+                {children}
             </ThemeProvider>
         </AuthProvider>
         <Toaster/>
