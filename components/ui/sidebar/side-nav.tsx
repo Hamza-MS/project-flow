@@ -1,19 +1,11 @@
-'use client';
-
 import React from 'react';
-
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-
-import { SIDENAV_ITEMS } from '@/app/sidebar/constants';
-import { SideNavItem } from '@/app/sidebar/types';
-import { Icon } from '@iconify/react';
 import {WorkspaceSidebarMenu} from "@/components/ui/sidebar/sidebar-menu";
 import WorkspaceSidebarDropdown from "@/components/ui/sidebar/sidebar-dropdown";
+import ProjectSidebarList from "@/components/ui/sidebar/sidebar-projects";
 
 const SideNav = () => {
 
-  const [sidebarCollapsed, setSidebarCollapsed] = React.useState(false);
+    const sidebarCollapsed = false; // TODO: get from context
 
     return (
         <div
@@ -25,7 +17,7 @@ const SideNav = () => {
           <div className="flex h-full w-full flex-1 flex-col">
             <WorkspaceSidebarDropdown sidebarCollapsed={sidebarCollapsed}/>
             <WorkspaceSidebarMenu  sidebarCollapsed={sidebarCollapsed}/>
-
+            <ProjectSidebarList />
           </div>
         </div>
     );
