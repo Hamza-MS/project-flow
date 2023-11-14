@@ -4,9 +4,7 @@ import './globals.css'
 import {Toaster} from "@/components/ui/toaster";
 import AuthProvider from "@/context/AuthProvider";
 
-//Side Bar Imports 
-import Header from '@/components/ui/header';
-import HeaderMobile from '@/components/ui/header-mobile';
+//Side Bar Imports
 import SideNav from '@/components/ui/side-nav';
 import PageWrapper from '@/components/ui/page-wrapper';
 import MarginWidthWrapper from '@/components/ui/margin-width-wrapper';
@@ -31,8 +29,6 @@ export default function RootLayout({
             <SideNav />
             <main className='flex-1'>
               <MarginWidthWrapper>
-                <Header />
-                <HeaderMobile />
                 <PageWrapper>
                   {children}
                 </PageWrapper>
