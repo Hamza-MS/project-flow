@@ -18,7 +18,6 @@ import {signOut} from "next-auth/react";
 
 
 type Props = {
-    sidebarCollapsed: boolean;
 };
 const WorkspaceSidebarDropdown = (props: Props) => {
 
@@ -39,10 +38,10 @@ const WorkspaceSidebarDropdown = (props: Props) => {
                             <AvatarFallback className={"rounded-md"}>YM</AvatarFallback>
                         </Avatar>
 
-                        {!props.sidebarCollapsed && session?.user?.name}
+                        {session?.user?.name}
                     </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className={props.sidebarCollapsed ? "" : "md:w-[250px]"}>
+                <DropdownMenuContent className={"md:w-[250px]"}>
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator/>
                     <DropdownMenuItem onClick={() => router.push(`/profile/${session?.user?.id}`)}>

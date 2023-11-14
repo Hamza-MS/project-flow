@@ -2,6 +2,7 @@ import React from 'react';
 import {WorkspaceSidebarMenu} from "@/components/ui/sidebar/sidebar-menu";
 import WorkspaceSidebarDropdown from "@/components/ui/sidebar/sidebar-dropdown";
 import ProjectSidebarList from "@/components/ui/sidebar/sidebar-projects";
+import WorkPlaceToggles from "@/components/ui/sidebar/sidebar-toggles";
 
 const SideNav = () => {
 
@@ -14,20 +15,14 @@ const SideNav = () => {
                 sidebarCollapsed ? "" : "md:w-[280px]"
             } ${sidebarCollapsed ? "left-0" : "-left-full md:left-0"}`}
         >
-          <div className="flex h-full w-full flex-1 flex-col">
-            <WorkspaceSidebarDropdown sidebarCollapsed={sidebarCollapsed}/>
-            <WorkspaceSidebarMenu  sidebarCollapsed={sidebarCollapsed}/>
-            <ProjectSidebarList />
-          </div>
+            <div className="flex h-full w-full flex-1 flex-col">
+                <WorkspaceSidebarDropdown />
+                <WorkspaceSidebarMenu />
+                <ProjectSidebarList/>
+                <WorkPlaceToggles/>
+            </div>
         </div>
     );
-  };
-  
-  export default SideNav;
-  
- /*
- <WorkspaceSidebarDropdown />
- <WorkspaceSidebarQuickAction />
-  <ProjectSidebarList />
-  <WorkspaceHelpSection />
-  */
+};
+
+export default SideNav;

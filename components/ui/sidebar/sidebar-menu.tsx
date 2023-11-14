@@ -7,7 +7,6 @@ import {cn} from "@/lib/utils";
 import { BarChart2, Briefcase, CheckCircle, LayoutGrid } from "lucide-react";
 
 interface Props {
-    sidebarCollapsed: boolean;
 }
 
 const workspaceLinks = [
@@ -53,7 +52,7 @@ export const WorkspaceSidebarMenu = (props : Props) => {
                     )}
                 >
                     {<item.Icon className={"h-4 w-4 font-medium shrink-0 !text-lg"}/>}
-                    {!props.sidebarCollapsed && item.name}
+                    {item.name}
                 </Link>
             ))}
         </div>
