@@ -8,6 +8,7 @@ import AuthProvider from "@/context/AuthProvider";
 import SideNav from '@/components/ui/sidebar/side-nav';
 import PageWrapper from '@/components/ui/page-wrapper';
 import MarginWidthWrapper from '@/components/ui/margin-width-wrapper';
+import {ThemeProvider} from "@/components/theme-provider";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -23,14 +24,21 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-        <body className={`bg.white ${inter.className}`}>
+        <body className={`${inter.className}`}>
         <AuthProvider>
-            <div className='relative flex h-screen w-full overflow-hidden'>
-                <SideNav/>
-                <PageWrapper>
-                    {children}
-                </PageWrapper>
-            </div>
+            <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+            >
+                <div className='relative flex h-screen w-full overflow-hidden'>
+                    <SideNav/>
+                    <PageWrapper>
+                        {children}
+                    </PageWrapper>
+                </div>
+            </ThemeProvider>
         </AuthProvider>
         <Toaster/>
         </body>
